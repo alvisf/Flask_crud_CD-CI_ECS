@@ -1,2 +1,7 @@
-# CircleCI
-this is a project to learn docker circleci and aws ecs
+## Publish a File
+
+This is a project to learn
+
+- Docker 
+- circleCi
+- AWS ECS
