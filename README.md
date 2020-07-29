@@ -1,7 +1,6 @@
 ## Publish a File
 
-This is a project to learn
-
+## What I have learnt
 - Docker 
 - circleCi
 - AWS ECS
