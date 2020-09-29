@@ -18,7 +18,10 @@ jobs:
       - run:
           command: pytest
           name: Test
-      - run: python app.py
+      - run: 
+          name: "flask running"
+          background: true
+          command: python app.py
 
   newman-collection-run:
     executor: newman/postman-newman-docker
