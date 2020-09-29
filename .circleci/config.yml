@@ -23,6 +23,7 @@ jobs:
           background: true
           command: python app.py
 
+
   newman-collection-run:
     executor: newman/postman-newman-docker
     steps:

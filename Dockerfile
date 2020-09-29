@@ -12,7 +12,7 @@ RUN pip3 --no-cache install Flask \
     && pip3 --no-cache install flask_sqlalchemy 
 
 
-EXPOSE 5000
+EXPOSE 80
 
 ENTRYPOINT ["python3"]
 CMD ["app.py"]
