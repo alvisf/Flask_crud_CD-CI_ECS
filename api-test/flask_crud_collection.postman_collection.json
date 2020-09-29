@@ -1,0 +1,200 @@
+{
+	"info": {
+		"_postman_id": "865060e1-8051-4e7a-9fb7-8bc3ad5a7ec3",
+		"name": "flask crud collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Artists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "88964856-04f1-43b5-98d6-2230fc7470bc",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include('{\\n');",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{$guid}}\",\n    \"description\":\"frontend engineer\",\n    \"score\":32,\n    \"noOfMovie\":1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/artist",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"artist"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "sdfs",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Artists",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1b989ef8-0e74-4ba1-bc45-aace1dac1313",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include(\"[\\n\");",
+							"});",
+							"pm.test(\"Your test name\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.environment.set(\"test_code\", jsonData[0].id);",
+							"    var testCode= pm.environment.get(\"test_code\");",
+							"    pm.expect(jsonData[0].id).to.eql(testCode);",
+							"});",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/artist",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"artist"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Artist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2d6be1e0-a4ed-4286-ad5c-c7c4104606fe",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Body matches string\", function () {",
+							"    pm.expect(pm.response.text()).to.include('{\\n');",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{$guid}}\",\n    \"description\":\"frontend engineer\",\n    \"score\":32,\n    \"noOfMovie\":1\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/artist/{{test_code}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"artist",
+						"{{test_code}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Artist",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "54beee1f-ce97-40ff-b6f3-c36afaf5e844",
+						"exec": [
+							"pm.test(\"Body matches string\", function () {",
+							"    var testCode =pm.environment.get(\"test_code\");",
+							"    pm.expect(pm.response.text()).to.include(' \"id\": '+testCode);",
+							"});",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Response time is less than 200ms\", function () {",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/artist/{{test_code}}",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"artist",
+						"{{test_code}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

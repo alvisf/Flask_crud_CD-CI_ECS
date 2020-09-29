@@ -44,6 +44,7 @@ artists_schema = ArtistSchema(many=True)
 # Create a Artist
 @app.route("/artist", methods=["POST"])
 def add_artist():
+    # print(request.json["name"])
     name = request.json["name"]
     description = request.json["description"]
     score = request.json["score"]
