@@ -13,6 +13,8 @@ Create an *ECS* cluster and create task definition and services.
 ## Lessons learnt
 - Docker 
 - circleCi
+- Postman
+- Newman
 - AWS ECS
 - SQLAlchemy
 - Flask
