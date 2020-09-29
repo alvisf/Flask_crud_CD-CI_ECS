@@ -36,4 +36,6 @@ workflows:
   main:
     jobs:
       - build-and-test
-      - newman-collection-run
+      - newman-collection-run:
+          requires:
+            - build-and-test
