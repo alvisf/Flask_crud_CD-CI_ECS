@@ -2,6 +2,7 @@ version: 2.1
 
 orbs:
   python: circleci/python@0.2.1
+  newman: postman/newman@0.0.2
 
 jobs:
   build-and-test:
@@ -16,8 +17,20 @@ jobs:
       - run:
           command: pytest
           name: Test
+      - run: python app.py
+
+jobs:
+  newman-collection-run:
+    executor: newman/postman-newman-docker
+    steps:
+      - checkout
+      - newman/newman-run:
+          collection: ./api-test/flask_crud_collection.postman_collection.json
+          environment: ./api-test/flask-crud.postman_environment.json
+          timeout: '1000'
 
 workflows:
   main:
     jobs:
       - build-and-test
+      - newman-collection-run
