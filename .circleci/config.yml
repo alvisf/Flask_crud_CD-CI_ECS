@@ -5,6 +5,7 @@ orbs:
   newman: postman/newman@0.0.2
 
 jobs:
+
   build-and-test:
     executor: python/default
     steps:
@@ -18,7 +19,7 @@ jobs:
           command: pytest
           name: Test
       - run: python app.py
-      
+
   newman-collection-run:
     executor: newman/postman-newman-docker
     steps:
