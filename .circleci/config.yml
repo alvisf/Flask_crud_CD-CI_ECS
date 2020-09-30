@@ -15,8 +15,8 @@ jobs:
       - run: apt-get install nodejs -y && apt-get install npm -y
       - run: npm install -g newman
       - run: apt-get install python3 -y && apt-get -y install python3-pip
-      - run: pip3 install pipenv
-      - run: pip install -r requirements.txt
+      # - run: pip3 install pipenv
+      - run: pip3 install -r requirements.txt
 
       - run: python3 app.py >> log.txt 2>&1 &
       # - run:
