@@ -1,4 +1,4 @@
-version: 2.1
+.version: 2.1
 
 
 jobs:
@@ -18,26 +18,6 @@ jobs:
       # - run: pip3 install pipenv
       - run: pip3 install -r requirements.txt
 
-<<<<<<< HEAD
-      - run: python3 app.py >> log.txt 2>&1 &
-      # - run:
-      #     command: pytest
-      #     name: Test
-      # - run: 
-      #     name: "flask running"
-      #     background: true
-      #     command: python app.py
-
-
-  # newman-collection-run:
-
-  #   steps:
-  #     - checkout
-  #     - newman/newman-run:
-  #         collection: ./api-test/flask_crud_collection.postman_collection.json
-  #         environment: ./api-test/flask-crud.postman_environment.json
-  #         timeout: '1000'
-=======
   newman-collection-run:
     executor: newman/postman-newman-docker
     steps:
@@ -46,7 +26,6 @@ jobs:
           collection: ./api-test/flask_crud_collection.postman_collection.json
           environment: ./api-test/flask-crud.postman_environment.json
           timeout: '1000'
->>>>>>> parent of 1ed2e5d... last fix
 
 workflows:
   main:
