@@ -1,13 +1,12 @@
 version: 2.1
 
-orbs:
-  python: circleci/python@0.2.1
-  newman: postman/newman@0.0.2
 
 jobs:
-
+  build:
+    docker:
+      - image: circleci/ubuntu-server
   build-and-test:
-    executor: python/default
+
     steps:
       - checkout
     #   - python/load-cache
@@ -25,7 +24,7 @@ jobs:
 
 
   newman-collection-run:
-    executor: newman/postman-newman-docker
+
     steps:
       - checkout
       - newman/newman-run:
