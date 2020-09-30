@@ -7,9 +7,10 @@ jobs:
       - image: ubuntu
     steps:
       - checkout
+      - run: apt-get update && apt-get upgrade
       - run: DEBIAN_FRONTEND="noninteractive" && apt-get -y install tzdata
       - run: ln -fs ../usr/share/zoneinfo/America/New_York ../etc/localtime
-      - run: apt-get update && apt-get upgrade
+      - run: dpkg-reconfigure --frontend noninteractive tzdata      
       - run: apt-get install nodejs -y && apt-get install npm -y
       - run: npm install -g newman
       - run: apt-get install python3 -y && apt-get -y install python3-pip
