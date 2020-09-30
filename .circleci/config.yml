@@ -51,7 +51,7 @@ workflows:
   main:
     jobs:
       - pytest
-
+      - deploy
       # - newman-collection-run:
       #     requires:
       #       - build-and-test
