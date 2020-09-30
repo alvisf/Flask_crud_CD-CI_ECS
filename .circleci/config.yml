@@ -9,6 +9,7 @@ jobs:
       - checkout
       - run: apt-get update && apt-get upgrade
       - run: echo 'export DEBIAN_FRONTEND="noninteractive"' >> $BASH_ENV 
+      - run: apt-get install -y tzdata
       - run: ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
       - run: dpkg-reconfigure --frontend noninteractive tzdata      
       - run: apt-get install nodejs -y && apt-get install npm -y
