@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - run: apt-get update && apt-get upgrade
-      - run: echo 'export DEBIAN_FRONTEND="noninteractive"' >> $DEBIAN_FRONTEND 
+      - run: echo 'export DEBIAN_FRONTEND="noninteractive"' >> $BASH_ENV 
       - run: ln -fs ../usr/share/zoneinfo/America/New_York ../etc/localtime
       - run: dpkg-reconfigure --frontend noninteractive tzdata      
       - run: apt-get install nodejs -y && apt-get install npm -y
