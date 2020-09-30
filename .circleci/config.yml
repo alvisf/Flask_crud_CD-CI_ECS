@@ -4,10 +4,12 @@ version: 2.1
 jobs:
   build-and-test:
     docker:
-      - image: circleci/ubuntu-server
+      - image: ubuntu
     steps:
       - checkout
-      - run: echo "hello"
+      - run: apt-get update && apt-get upgrade
+      - run: apt-get install npm -y
+      - run: npm install -g newman
       
       # - run: pip install pipenv
       # - run: pip install -r requirements.txt
