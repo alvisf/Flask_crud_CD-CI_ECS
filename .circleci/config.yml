@@ -38,20 +38,20 @@ jobs:
       #     command: ./package.sh
     
 
-  newman-collection-run:
-    executor: newman/postman-newman-docker
-    steps:
-      - checkout
-      - newman/newman-run:
-          collection: ./api-test/flask_crud_collection.postman_collection.json
-          environment: ./api-test/flask-crud.postman_environment.json
-          timeout: '1000'
+  # newman-collection-run:
+  #   executor: newman/postman-newman-docker
+  #   steps:
+  #     - checkout
+  #     - newman/newman-run:
+  #         collection: ./api-test/flask_crud_collection.postman_collection.json
+  #         environment: ./api-test/flask-crud.postman_environment.json
+  #         timeout: '1000'
 
 workflows:
   main:
     jobs:
       - pytest
 
-      - newman-collection-run:
-          requires:
-            - build-and-test
+      # - newman-collection-run:
+      #     requires:
+      #       - build-and-test
