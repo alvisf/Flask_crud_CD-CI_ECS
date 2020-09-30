@@ -7,6 +7,7 @@ jobs:
       - image: ubuntu
     steps:
       - checkout
+      - run: export DEBIAN_FRONTEND=noninteractive
       - run: apt-get update && apt-get upgrade
       - run: apt-get install npm -y
       - run: npm install -g newman
