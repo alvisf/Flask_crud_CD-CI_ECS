@@ -2,40 +2,37 @@ version: 2.1
 
 
 jobs:
-  build:
+  build-and-test:
     docker:
       - image: circleci/ubuntu-server
-  build-and-test:
-
     steps:
       - checkout
-    #   - python/load-cache
-    #   - python/install-deps
-    #   - python/save-cache
-      - run: pip install pipenv
-      - run: pip install -r requirements.txt
-      - run:
-          command: pytest
-          name: Test
-      - run: 
-          name: "flask running"
-          background: true
-          command: python app.py
+      - run: echo "hello"
+      
+      # - run: pip install pipenv
+      # - run: pip install -r requirements.txt
+      # - run:
+      #     command: pytest
+      #     name: Test
+      # - run: 
+      #     name: "flask running"
+      #     background: true
+      #     command: python app.py
 
 
-  newman-collection-run:
+  # newman-collection-run:
 
-    steps:
-      - checkout
-      - newman/newman-run:
-          collection: ./api-test/flask_crud_collection.postman_collection.json
-          environment: ./api-test/flask-crud.postman_environment.json
-          timeout: '1000'
+  #   steps:
+  #     - checkout
+  #     - newman/newman-run:
+  #         collection: ./api-test/flask_crud_collection.postman_collection.json
+  #         environment: ./api-test/flask-crud.postman_environment.json
+  #         timeout: '1000'
 
 workflows:
   main:
     jobs:
       - build-and-test
-      - newman-collection-run:
-          requires:
-            - build-and-test
+      # - newman-collection-run:
+      #     requires:
+      #       - build-and-test
