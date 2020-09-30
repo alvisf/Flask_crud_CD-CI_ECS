@@ -10,9 +10,9 @@ jobs:
     executor: python/default
     steps:
       - checkout
-    #   - python/load-cache
-    #   - python/install-deps
-    #   - python/save-cache
+      - python/load-cache
+      - python/install-deps
+      - python/save-cache
       - run: pip install pipenv
       - run: pip install -r requirements.txt
       - run:
