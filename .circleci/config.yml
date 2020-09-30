@@ -6,7 +6,7 @@ orbs:
 
 jobs:
 
-  build-and-test:
+  pytest:
     executor: python/default
     steps:
       - checkout
@@ -22,7 +22,21 @@ jobs:
           name: "flask running"
           background: true
           command: python app.py
-
+  deploy:
+    docker:
+      - image: docker:18.06.1-ce-git
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run:
+          name: Install dependencies
+          command: |
+            apk add py-pip
+            pip install awscli
+      # - run: 
+      #     name: Build image and push
+      #     command: ./package.sh
+    
 
   newman-collection-run:
     executor: newman/postman-newman-docker
@@ -36,7 +50,8 @@ jobs:
 workflows:
   main:
     jobs:
-      - build-and-test
+      - pytest
+
       - newman-collection-run:
           requires:
             - build-and-test
